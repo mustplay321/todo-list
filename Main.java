@@ -3,7 +3,7 @@
  * 
  * Kaden Christie
  * Created: 9/8/24
- * Updated: 9/9/24
+ * Updated: 9/10/24
  ********************************/
 
 import java.util.Scanner;
@@ -29,8 +29,6 @@ class Task {
         this.taskDescription = taskDescription;
         this.taskDueDate = taskDueDate;
 
-        currentTasks.add(this);
-
     }
 
     public static void Navigation() {
@@ -52,18 +50,26 @@ class Task {
             case 1:
             //Print current tasks list
             if (currentTasks.size() > 0) {
+                println("Current Tasks: "); 
                 for (int i = 0; i < currentTasks.size(); i++) {
-                    println("Current Tasks: " + currentTasks.get(i).taskName);
+                    println(currentTasks.get(i).taskName);
                 }
             }
             else {
                 println("There are currently no tasks on your list. Add some!");
             }
-            Task.Navigation();
+            Task.Cont();
             break;
             case 2:
             //add task to list
-            
+            println("Enter the tasks name: ");
+            String newTaskName = newTaskInput.nextLine();
+            println("Enter a description: ");
+            String newTaskDescription = newTaskInput.nextLine();
+            println("Enter the Due Date: ");
+            String newTaskDueDate = newTaskInput.nextLine();
+            Task newTask = new Task(newTaskName, newTaskDescription, newTaskDueDate);
+            currentTasks.add(newTask);
             Task.Cont();
             break;
             case 3:
@@ -86,8 +92,10 @@ class Task {
         }
         else {
             println("Invalid Entry");
+            Task.Cont();
         }
     }
+
 
 
     //Print methods
@@ -103,9 +111,6 @@ class Task {
 public class Main {
     public static void main(String[] args){
 
-        //Task testTask1 = new Task("Math Homework", "Do Math Homework", "Tuesday");
-        //Task testTask2 = new Task("Math Homework", "Do Math Homework", "Tuesday");
-        //Task testTask3 = new Task("Math Homework", "Do Math Homework", "Tuesday");
         Task.Navigation();
         
     }
