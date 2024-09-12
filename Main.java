@@ -3,7 +3,7 @@
  * 
  * Kaden Christie
  * Created: 9/8/24
- * Updated: 9/10/24
+ * Updated: 9/11/24
  ********************************/
 
 import java.util.Scanner;
@@ -15,18 +15,17 @@ import java.util.List;
  */
 
 class Task {
+
     String taskName;
-    String taskDescription;
     String taskDueDate;
     
     static Scanner userNavigation = new Scanner(System.in);
 
     static List<Task> currentTasks = new ArrayList<>();
 
-    public Task(String taskName, String taskDescription, String taskDueDate) {
+    public Task(String taskName, String taskDueDate) {
 
         this.taskName = taskName;
-        this.taskDescription = taskDescription;
         this.taskDueDate = taskDueDate;
 
     }
@@ -41,43 +40,49 @@ class Task {
         + "\n4: Remove a task");
 
         //Store and respond to user input
-        Scanner newTaskInput = new Scanner(System.in);
-        Scanner userNavigation = new Scanner(System.in);
-        String userNav = userNavigation.nextLine();
+        //Scanner newTaskInput = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
+        String userNav = userInput.nextLine();
         int convertedUserNav = Integer.parseInt(userNav);
 
         switch(convertedUserNav) {
             case 1:
-            //Print current tasks list
-            if (currentTasks.size() > 0) {
-                println("Current Tasks: "); 
-                for (int i = 0; i < currentTasks.size(); i++) {
-                    println(currentTasks.get(i).taskName);
+                //Print current tasks list
+                if (currentTasks.isEmpty() == false) {
+                    println("Current Tasks: "); 
+                    for (int i = 0; i < currentTasks.size(); i++) {
+                        println(currentTasks.get(i).taskName + "Due: " + currentTasks.get(i).taskDueDate);
+                    }
                 }
-            }
-            else {
-                println("There are currently no tasks on your list. Add some!");
-            }
-            Task.Cont();
+                else {
+                    println("There are currently no tasks on your list. Add some!");
+                }
+                Task.Cont();
             break;
             case 2:
-            //add task to list
-            println("Enter the tasks name: ");
-            String newTaskName = newTaskInput.nextLine();
-            println("Enter a description: ");
-            String newTaskDescription = newTaskInput.nextLine();
-            println("Enter the Due Date: ");
-            String newTaskDueDate = newTaskInput.nextLine();
-            Task newTask = new Task(newTaskName, newTaskDescription, newTaskDueDate);
-            currentTasks.add(newTask);
-            Task.Cont();
+                //add task to list
+                println("Enter the tasks name: ");
+                String newTaskName = userInput.nextLine();
+                println("Enter the Due Date: ");
+                String newTaskDueDate = userInput.nextLine();
+                Task newTask = new Task(newTaskName, newTaskDueDate);
+                currentTasks.add(newTask);
+                Task.Cont();
             break;
             case 3:
-            //edit task
+                //edit task
             break;
             case 4:
-            //remove task
-
+                //remove task
+                println("Please enter the name of the task you would like to remove: ");
+                String removedTask = userInput.nextLine();
+                for (int count = 0; count < currentTasks.size(); count++) {
+                    String tempTask = currentTasks.get(count).taskName;
+                    if (removedTask.equals(tempTask)) {
+                        currentTasks.remove(count);
+                    } 
+                    //todo: make failsafe
+                }
         }
     }
 
