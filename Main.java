@@ -51,7 +51,7 @@ class Task {
                 if (currentTasks.isEmpty() == false) {
                     println("Current Tasks: "); 
                     for (int i = 0; i < currentTasks.size(); i++) {
-                        println(currentTasks.get(i).taskName + "Due: " + currentTasks.get(i).taskDueDate);
+                        println(currentTasks.get(i).taskName + " Due: " + currentTasks.get(i).taskDueDate);
                     }
                 }
                 else {
@@ -81,11 +81,12 @@ class Task {
                     if (removedTask.equals(tempTask)) {
                         currentTasks.remove(count);
                     } 
-                    //todo: make failsafe
+                    Task.Cont();
                 }
         }
     }
 
+    //Acts as a buffer between a user's action and the return to the navigation screen
     public static void Cont() {
         println("Return to Navigation? y/n: ");
         String cont = userNavigation.nextLine();
