@@ -1,2 +1,2 @@
 # todo list
- Simple Todo list application
+ A simple command line to-do list program.
