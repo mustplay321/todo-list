@@ -24,7 +24,7 @@ class Task {
 
   }
 
-  public static void Navigation() {
+  public static void navigation() {
 
     //Print navigation options to the console
     println("Hello! Where would you like to start today? " 
@@ -50,7 +50,7 @@ class Task {
         } else {
           println("There are currently no tasks on your list. Add some!");
         }
-        Task.Cont();
+        Task.cont();
         break;
       case 2:
         //add task to list
@@ -60,7 +60,7 @@ class Task {
         String newTaskDueDate = userInput.nextLine();
         Task newTask = new Task(newTaskName, newTaskDueDate);
         currentTasks.add(newTask);
-        Task.Cont();
+        Task.cont();
         break;
       case 3:
         //edit task
@@ -75,25 +75,25 @@ class Task {
             currentTasks.remove(count);
           } 
         }
-        Task.Cont();
+        Task.cont();
         break;
       default:
         println("Invalid Input");
-        Task.Cont();
+        Task.cont();
     }
   }
 
   //Acts as a buffer between a user's action and the return to the navigation screen
-  public static void Cont() {
+  public static void cont() {
     println("Return to Navigation? y/n: ");
     String cont = userNavigation.nextLine();
     if (cont.equals("y")) {
-      Task.Navigation();
+      Task.navigation();
     } else if (cont.equals("n")) {
       System.exit(0);
     } else {
       println("Invalid Entry");
-      Task.Cont();
+      Task.cont();
     }
   }
 
