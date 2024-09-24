@@ -83,30 +83,28 @@ class Task {
     }
   }
 
-    //Acts as a buffer between a user's action and the return to the navigation screen
-    public static void Cont() {
-        println("Return to Navigation? y/n: ");
-        String cont = userNavigation.nextLine();
-        if (cont.equals("y")) {
-            Task.Navigation();
-        }
-        else if (cont.equals("n")) {
-            System.exit(0);
-        }
-        else {
-            println("Invalid Entry");
-            Task.Cont();
-        }
+  //Acts as a buffer between a user's action and the return to the navigation screen
+  public static void Cont() {
+    println("Return to Navigation? y/n: ");
+    String cont = userNavigation.nextLine();
+    if (cont.equals("y")) {
+      Task.Navigation();
+    } else if (cont.equals("n")) {
+      System.exit(0);
+    } else {
+      println("Invalid Entry");
+      Task.Cont();
     }
+  }
 
 
 
-    //Print methods
-    public static void println(String string) {
-        System.out.println(string);
-    }
+  //Print methods
+  public static void println(String string) {
+    System.out.println(string);
+  }
 
-    public static void print(String string) {
-        System.out.print(string);
-    }
+  public static void print(String string) {
+    System.out.print(string);
+  }
 }
